@@ -1,16 +1,25 @@
 <script>
-import Navbar from './views/Navbar.vue'
+import Navbar from './components/Navbar.vue'
+import LoadingModal from './components/LoadingModal.vue'
+import { useGlobalsStore } from './stores/globals.js'
+import { mapActions, mapState } from 'pinia'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    LoadingModal
+  },
+  computed: {
+    ...mapState(useGlobalsStore, ['page', 'isLoading'])
   }
 }
 </script>
 
 <template>
   <Navbar />
-
-  <router-view></router-view>
+  <!-- <LoadingModal v-if="isLoading === true" /> -->
+  <div>
+    <router-view></router-view>
+  </div>
 </template>

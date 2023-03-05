@@ -26,9 +26,7 @@ export default {
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-          <div class="card-img-left d-none d-md-flex">
-            <!-- Background image for card set in CSS! -->
-          </div>
+          <div class="card-img-left d-none d-md-flex"></div>
           <div class="card-body p-4 p-sm-5 bg-dark text-white">
             <h5 class="card-title text-center mb-5 fw-light fs-5 fw-bold text-uppercase">Login</h5>
             <form @submit.prevent="handleLogin(inputLogin)">
@@ -52,6 +50,7 @@ export default {
                   id="floatingInputEmail"
                   placeholder="Password"
                   v-model="inputLogin.password"
+                  required
                 />
                 <label for="floatingInputEmail">Password</label>
               </div>
@@ -63,7 +62,9 @@ export default {
               </div>
 
               <hr class="my-4" />
-              <GoogleLogin style="width: 100%" :callback="callback" />
+              <div class="text-center mb-3">
+                <GoogleLogin :callback="callback" />
+              </div>
 
               <p class="text-center">Dont have an account?</p>
               <div class="d-grid mb-2">

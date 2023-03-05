@@ -31,23 +31,21 @@ export default {
   <div class="container">
     <div class="card mt-3 bg-yellow">
       <div class="card-body">
-        <div class="d-flex">
-          <div>
-            <div class="text-center">
-              <h2><span class="badge bg-success">My Bookmarks</span></h2>
-            </div>
-
-            <LoadingModal class="text-center" v-if="isLoading" />
-
-            <div class="d-flex flex-wrap justify-content-center text-center mt-3">
-              <MovieCard
-                v-for="(bookmark, index) in bookmarks"
-                :key="bookmark.id"
-                :movie="bookmark['Movie']"
-                :bookmarkId="bookmark.id"
-              />
-            </div>
+        <div class="card bg-green">
+          <div class="card-body">
+            <h3>My Bookmarks</h3>
           </div>
+        </div>
+
+        <LoadingModal class="text-center" v-if="isLoading" />
+
+        <div class="d-flex flex-wrap justify-content-center text-center mt-3">
+          <MovieCard
+            v-for="(bookmark, index) in bookmarks"
+            :key="bookmark.id"
+            :movie="bookmark['Movie']"
+            :bookmarkId="bookmark.id"
+          />
         </div>
       </div>
     </div>

@@ -50,6 +50,7 @@ export default {
                   class="form-control bg-dark text-white"
                   id="floatingInputEmail"
                   placeholder="Password"
+                  required
                   v-model="inputRegister.password"
                 />
                 <label for="floatingInputEmail">Password</label>

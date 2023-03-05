@@ -21,7 +21,7 @@ export const useLoginStore = defineStore('login', {
         this.router.push('/home')
       } catch (error) {
         console.log(error)
-        toast('Failed login')
+        toast(error.response.data.message)
       }
     },
     async callback(response) {

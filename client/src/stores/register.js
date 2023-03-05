@@ -19,7 +19,7 @@ export const useRegisterStore = defineStore('register', {
         this.router.push('/login')
       } catch (error) {
         console.log(error)
-        toast('Failed register')
+        toast(error.response.data.message)
       }
     }
   }

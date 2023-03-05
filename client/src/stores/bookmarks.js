@@ -21,7 +21,7 @@ export const useBookmarksStore = defineStore('bookmarks', {
           }
         })
         this.bookmarks = data
-        toast('Success get data')
+        toast('Success get my bookmarks')
         this.isLoading = false
       } catch (error) {
         console.log(error)

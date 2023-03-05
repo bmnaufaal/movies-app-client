@@ -56,7 +56,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem('access_token')
   if (to.name === 'login' && isAuthenticated) {
     next('/home')
-  } else if (to.name === 'bookmarks' && !isAuthenticated) {
+  } else if ((to.name === 'bookmarks' || to.name === 'bookmarks_detail') && !isAuthenticated) {
     next('/login')
   } else {
     next()

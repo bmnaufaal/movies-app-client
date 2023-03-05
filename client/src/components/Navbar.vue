@@ -27,7 +27,9 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <router-link class="navbar-brand pointer" :to="{ name: 'home' }">Movies App</router-link>
+      <router-link class="navbar-brand pointer" :to="{ name: 'home' }"
+        ><BootstrapIcon icon="film" /> Movies App</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"

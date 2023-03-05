@@ -4,7 +4,7 @@ import toast from '../../helper/toast.js'
 
 export const useBookmarksStore = defineStore('bookmarks', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://movies-app-server-production.up.railway.app',
     bookmarks: [],
     isLoading: false
   }),

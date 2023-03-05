@@ -52,6 +52,7 @@ export default {
             <!-- Filter Section -->
             <select class="form-select" aria-label="Default select example" v-model="selectedGenre">
               <option value="" disabled selected>Filter by genre</option>
+              <option value="nofilter">No filter</option>
               <option :value="genre.id" v-for="(genre, index) in genres" :key="genre.id">
                 {{ genre.name }}
               </option>

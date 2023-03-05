@@ -18,6 +18,7 @@ export default {
           <span class="ms-1 badge text-bg-success">{{ movie.Genre.name }}</span>
           <span class="ms-1 badge text-bg-success">{{ movie.Author.username }}</span>
           <span class="ms-1 badge text-bg-success">{{ movie.rating }}</span>
+          
         </li>
         <li class="list-group-item bg-green" style="text-align: justify; text-justify: inter-word">
           {{ movie.synopsis }}

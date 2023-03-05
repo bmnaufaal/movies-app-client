@@ -4,7 +4,7 @@ import toast from '../../helper/toast.js'
 
 export const useMoviesStore = defineStore('movies', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://movies-app-server-production.up.railway.app',
     movies: [],
     genres: [],
     maxPages: 0,
@@ -16,7 +16,9 @@ export const useMoviesStore = defineStore('movies', {
       try {
         let queryParams = {}
         if (filter) {
-          queryParams.filter = filter
+          if (filter !== 'nofilter') {
+            queryParams.filter = filter
+          }
         }
         let { data } = await axios({
           method: 'GET',
@@ -37,7 +39,9 @@ export const useMoviesStore = defineStore('movies', {
           size: size
         }
         if (filter) {
-          queryParams.filter = filter
+          if (filter !== 'nofilter') {
+            queryParams.filter = filter
+          }
         }
         this.isLoading = true
         let { data } = await axios({

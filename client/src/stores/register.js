@@ -4,7 +4,7 @@ import toast from '../../helper/toast.js'
 
 export const useRegisterStore = defineStore('register', {
   state: () => ({
-    baseUrl: 'http://localhost:3000'
+    baseUrl: 'https://movies-app-server-production.up.railway.app'
   }),
   getters: {},
   actions: {

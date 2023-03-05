@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 export const useDetailStore = defineStore('detail', {
   state: () => ({
     clientUrl: 'http://localhost:5173',
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://movies-app-server-production.up.railway.app',
     movie: {
       Author: {
         username: ''

@@ -43,11 +43,18 @@ export default {
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link pointer active">Home</router-link>
-            <!-- <a class="nav-link pointer active" aria-current="page">Home</a> -->
+          </li>
+          <li class="nav-item">
+            <router-link
+              :to="{ name: 'bookmarks' }"
+              class="nav-link pointer active"
+              v-if="isLoggedIn"
+              >My Bookmarks</router-link
+            >
           </li>
         </ul>
 
-        <router-link class="btn btn-primary" :to="{ name: 'login' }" v-if="!isLoggedIn"
+        <router-link class="btn btn-light" :to="{ name: 'login' }" v-if="!isLoggedIn"
           >Login</router-link
         >
         <button class="btn btn-danger" @click.prevent="handleLogout" v-if="isLoggedIn">

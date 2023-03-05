@@ -16,69 +16,64 @@ export default {
     ...mapState(useLoginStore, ['isLoggedIn'])
   },
   methods: {
-    ...mapActions(useLoginStore, ['handleLogin'])
+    ...mapActions(useLoginStore, ['handleLogin', 'callback'])
   }
 }
 </script>
 
 <template>
-  <div class="container-fluid">
-    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white">
-          <div class="card-header">
-            <h3 class="mb-0">Login</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+          <div class="card-img-left d-none d-md-flex">
+            <!-- Background image for card set in CSS! -->
           </div>
-          <div class="row">
-            <div class="col">
-              <div class="col">
-                <div class="card-body p-5 pt-3">
-                  <form id="form-login" @submit.prevent="handleLogin(inputLogin)">
-                    <div class="mb-3">
-                      <label for="login-email" class="form-label">Email</label>
-                      <input
-                        type="email"
-                        id="login-email"
-                        class="form-control bg-dark text-white"
-                        placeholder="Email"
-                        v-model="inputLogin.email"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="login-password" class="form-label">Password</label>
-                      <input
-                        type="password"
-                        id="login-password"
-                        class="form-control bg-dark text-white"
-                        placeholder="Password"
-                        v-model="inputLogin.password"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <button class="btn btn-primary" style="width: 100%">Login</button>
-
-                      <!-- Google Sign In -->
-                      <!-- <GoogleSignIn class="ms-2" @googleSignIn="googleSignIn" /> -->
-                      <!-- or -->
-                      <!-- <p class="text-divider">
-                        <span>Or sign in with</span>
-                      </p>
-                      <GoogleLogin class="ms-2" :callback="callback" /> -->
-                      <!-- End Of Google Sign In -->
-                    </div>
-                  </form>
-                </div>
+          <div class="card-body p-4 p-sm-5 bg-dark text-white">
+            <h5 class="card-title text-center mb-5 fw-light fs-5 fw-bold text-uppercase">Login</h5>
+            <form @submit.prevent="handleLogin(inputLogin)">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control bg-dark text-white"
+                  id="floatingInputUsername"
+                  placeholder="Email"
+                  required
+                  autofocus
+                  v-model="inputLogin.email"
+                />
+                <label for="floatingInputUsername">Email</label>
               </div>
-            </div>
-          </div>
 
-          <div class="card-footer">
-            <div class="d-flex justify-content-between">
-              <div class="py-2">Don't have an account?</div>
-              <router-link :to="{ name: 'register' }" class="btn btn-primary"
-                >Register here</router-link
-              >
-            </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control bg-dark text-white"
+                  id="floatingInputEmail"
+                  placeholder="Password"
+                  v-model="inputLogin.password"
+                />
+                <label for="floatingInputEmail">Password</label>
+              </div>
+
+              <div class="d-grid mb-2">
+                <button class="btn btn-lg btn-light btn-login fw-bold text-uppercase" type="submit">
+                  Login
+                </button>
+              </div>
+
+              <hr class="my-4" />
+              <GoogleLogin style="width: 100%" :callback="callback" />
+
+              <p class="text-center">Dont have an account?</p>
+              <div class="d-grid mb-2">
+                <router-link
+                  :to="{ name: 'register' }"
+                  class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
+                  >Register
+                </router-link>
+              </div>
+            </form>
           </div>
         </div>
       </div>

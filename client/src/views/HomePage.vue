@@ -2,7 +2,7 @@
 import { useMoviesStore } from '../stores/movies'
 import { mapActions, mapState } from 'pinia'
 import MovieCard from '../components/MovieCard.vue'
-import LoadingModal from '../components/LoadingModal.vue'
+import LoadingButton from '../components/LoadingButton.vue'
 
 export default {
   name: 'HomePage',
@@ -36,7 +36,7 @@ export default {
   },
   components: {
     MovieCard,
-    LoadingModal
+    LoadingButton
   }
 }
 </script>
@@ -61,7 +61,7 @@ export default {
           </div>
         </div>
 
-        <LoadingModal class="text-center" v-if="isLoading" />
+        <LoadingButton v-if="isLoading" />
 
         <!-- Movie Card -->
         <div class="d-flex flex-wrap justify-content-center text-center mt-3">

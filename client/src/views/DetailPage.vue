@@ -2,12 +2,13 @@
 import { useDetailStore } from '../stores/detail'
 import { useLoginStore } from '../stores/login.js'
 import { mapActions, mapState } from 'pinia'
+import LoadingButton from '../components/LoadingButton.vue'
 
 export default {
   name: 'DetailPage',
   computed: {
     ...mapState(useLoginStore, ['isLoggedIn']),
-    ...mapState(useDetailStore, ['movie', 'bookmark', 'QRCode'])
+    ...mapState(useDetailStore, ['movie', 'bookmark', 'QRCode', 'detailLoading'])
   },
   methods: {
     ...mapActions(useDetailStore, [
@@ -26,12 +27,16 @@ export default {
       this.fetchBookmarkDetail(this.$route.params.id)
       this.getQRCode()
     }
+  },
+  components: {
+    LoadingButton
   }
 }
 </script>
 
 <template>
   <div class="container py-5">
+    <LoadingButton v-if="detailLoading" />
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-4">
         <div class="card border-success bg-green">

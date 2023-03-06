@@ -5,7 +5,8 @@ import { useRoute } from 'vue-router'
 
 export const useDetailStore = defineStore('detail', {
   state: () => ({
-    clientUrl: 'http://localhost:5173',
+    detailLoading: false,
+    clientUrl: 'https://movies-app-customer.web.app/',
     baseUrl: 'https://movies-app-server-production.up.railway.app',
     movie: {
       Author: {
@@ -21,20 +22,24 @@ export const useDetailStore = defineStore('detail', {
   actions: {
     async fetchMovieDetail(id) {
       try {
+        this.detailLoading = true
         const { data } = await axios({
           method: 'GET',
           url: this.baseUrl + '/customers/movies/' + id
         })
         this.movie = data
         toast('Success get movie detail')
+        this.detailLoading = false
       } catch (error) {
         console.log(error)
         toast(error.response.data.message)
+        this.detailLoading = false
       }
     },
 
     async fetchBookmarkDetail(id) {
       try {
+        this.detailLoading = true
         const { data } = await axios({
           method: 'GET',
           url: this.baseUrl + '/customers/bookmarks/' + id,
@@ -44,9 +49,11 @@ export const useDetailStore = defineStore('detail', {
         })
         this.movie = data.Movie
         toast('Success get bookmark detail')
+        this.detailLoading = false
       } catch (error) {
         console.log(error)
         toast(error.response.data.message)
+        this.detailLoading = false
       }
     },
 
@@ -88,6 +95,7 @@ export const useDetailStore = defineStore('detail', {
     },
     async getQRCode() {
       try {
+        this.detailLoading = true
         const QR = await axios({
           method: 'POST',
           url: 'https://api.qr-code-generator.com/v1/create?access-token=fVJ5f-cvu9hCsJzOzX9PzeLzZ2SKIEXyr9-sMfh-QPz35rHy-scPolxZxoPiiZUX',
@@ -100,9 +108,11 @@ export const useDetailStore = defineStore('detail', {
           }
         })
         this.QRCode = QR
+        this.detailLoading = false
       } catch (error) {
         console.log(error)
         toast('Failed to make QR code')
+        this.detailLoading = false
       }
     }
   }
